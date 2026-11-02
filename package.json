@@ -1,0 +1,63 @@
+{
+  "name": "red-tracker",
+  "productName": "Red tracker",
+  "version": "1.0.0",
+  "description": "Red tracker — торрент-клиент",
+  "main": "main.js",
+  "author": "Red tracker",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win nsis"
+  },
+  "dependencies": {
+    "webtorrent": "1.9.7"
+  },
+  "devDependencies": {
+    "electron": "31.7.7",
+    "electron-builder": "24.13.3"
+  },
+  "build": {
+    "appId": "com.redtracker.app",
+    "productName": "Red tracker",
+    "files": [
+      "main.js",
+      "preload.js",
+      "index.html",
+      "package.json",
+      "build/icon.png"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "build/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Red tracker",
+      "runAfterFinish": true,
+      "deleteAppDataOnUninstall": false,
+      "language": "1049",
+      "installerIcon": "build/icon.ico",
+      "uninstallerIcon": "build/icon.ico",
+      "installerHeaderIcon": "build/icon.ico",
+      "uninstallDisplayName": "Red tracker",
+      "artifactName": "Red-tracker-setup.exe"
+    },
+    "fileAssociations": [
+      {
+        "ext": "torrent",
+        "name": "Torrent file"
+      }
+    ]
+  }
+}
